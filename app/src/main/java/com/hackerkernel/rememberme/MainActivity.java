@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 SharedPreferences sp = getSharedPreferences(Keys.SP_NAME, MODE_PRIVATE);
-                String usernamesp = sp.getString("username", Keys.DEFAULT);
-                String passwordsp = sp.getString("password", Keys.DEFAULT);
+                String usernamesp = sp.getString(Keys.SP_USERNAME, Keys.DEFAULT);
+                String passwordsp = sp.getString(Keys.SP_PASSWORD, Keys.DEFAULT);
                 //check username and password = sharepreferences
                 if (username.equals(usernamesp) && password.equals(passwordsp)) {
                     Intent intent = new Intent(getApplication(),HomeActivity.class);

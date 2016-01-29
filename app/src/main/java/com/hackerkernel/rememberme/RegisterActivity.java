@@ -40,8 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
                     T.show(getApplicationContext(), "password should be more than 8 letter");
                 } else {
                     SharedPreferences sp = getSharedPreferences(Keys.SP_NAME,MODE_PRIVATE);
-                    sp.edit().putString("username",username)
-                            .putString("password",password)
+                    sp.edit().putString(Keys.SP_USERNAME,username)
+                            .putString(Keys.SP_PASSWORD,password)
                             .apply();
                     T.show(getApplication(), "Register susccelfull");
                     //send user to home page
