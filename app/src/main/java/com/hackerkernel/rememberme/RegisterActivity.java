@@ -1,5 +1,6 @@
 package com.hackerkernel.rememberme;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,7 +43,12 @@ public class RegisterActivity extends AppCompatActivity {
                     sp.edit().putString("username",username)
                             .putString("password",password)
                             .apply();
-                    T.show(getApplication(),"Register susccelfull");
+                    T.show(getApplication(), "Register susccelfull");
+                    //send user to home page
+                    Intent intent = new Intent(getApplication(), HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 }
             }
         });
