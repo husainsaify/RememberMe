@@ -3,6 +3,7 @@ package com.hackerkernel.rememberme;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import butterknife.Bind;
@@ -26,5 +27,9 @@ public class HomeActivity extends AppCompatActivity {
         mUsernameView.setText(mUsername);
 
 
+    }
+
+    public void  goToAddActivity(View view) {
+        T.show(getApplication(),"add button");
     }
 }

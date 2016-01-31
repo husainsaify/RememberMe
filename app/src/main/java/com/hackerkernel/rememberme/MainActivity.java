@@ -13,14 +13,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    @Bind(R.id.username)
-    EditText mUsername;
-    @Bind(R.id.password)
-    EditText mPassword;
-    @Bind(R.id.login)
-    Button mLogin;
-    @Bind(R.id.goToRegister)
-    TextView mGoToRegister;
+    @Bind(R.id.username) EditText mUsername;
+    @Bind(R.id.password) EditText mPassword;
+    @Bind(R.id.login) Button mLogin;
+    @Bind(R.id.goToRegister) TextView mGoToRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
