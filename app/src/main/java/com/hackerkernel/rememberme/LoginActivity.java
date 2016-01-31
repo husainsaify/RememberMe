@@ -12,7 +12,7 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     @Bind(R.id.username) EditText mUsername;
     @Bind(R.id.password) EditText mPassword;
     @Bind(R.id.login) Button mLogin;
@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        Intent intent = new Intent(this,HomeActivity.class);
+        startActivity(intent);
 
         //login code
         mLogin.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 String passwordsp = sp.getString(Keys.SP_PASSWORD, Keys.DEFAULT);
                 //check username and password = sharepreferences
                 if (username.equals(usernamesp) && password.equals(passwordsp)) {
-                    Intent intent = new Intent(getApplication(),HomeActivity.class);
+                    Intent intent = new Intent(getApplication(), HomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);

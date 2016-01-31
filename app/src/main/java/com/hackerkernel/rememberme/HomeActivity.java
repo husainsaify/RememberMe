@@ -1,5 +1,6 @@
 package com.hackerkernel.rememberme;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void  goToAddActivity(View view) {
-        T.show(getApplication(),"add button");
+        startActivity(new Intent(getApplicationContext(),AddActivity.class));
     }
 }

@@ -20,4 +20,15 @@
     </string>
     <string name="already_member_register">Already a member? Login</string>
     <string name="register">Register</string>
+    <string-array name="category">
+        <item>Google</item>
+        <item>Facebook</item>
+        <item>Twitter</item>
+        <item>Yahoo</item>
+        <item>Pintrest</item>
+        <item>Redit</item>
+        <item>Instagram</item>
+        <item>Rediff</item>
+        <item>Other</item>
+    </string-array>
 </resources>
