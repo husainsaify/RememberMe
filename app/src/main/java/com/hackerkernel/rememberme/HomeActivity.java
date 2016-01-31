@@ -24,10 +24,11 @@ public class HomeActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences(Keys.SP_NAME,MODE_PRIVATE);
         mUsername= sp.getString(Keys.SP_USERNAME,Keys.DEFAULT);
-         T.show(getApplication(),mUsername);
+         T.show(getApplication(), mUsername);
         mUsernameView.setText(mUsername);
 
-
+        Database database = new Database(this);
+        database.getWritableDatabase();
     }
 
     public void  goToAddActivity(View view) {
