@@ -13,8 +13,7 @@ import butterknife.ButterKnife;
 public class HomeActivity extends AppCompatActivity {
 
     String mUsername;
-    @Bind(R.id.username)
-    TextView mUsernameView;
+    @Bind(R.id.username) TextView mUsernameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +25,9 @@ public class HomeActivity extends AppCompatActivity {
         mUsername= sp.getString(Keys.SP_USERNAME,Keys.DEFAULT);
          T.show(getApplication(), mUsername);
         mUsernameView.setText(mUsername);
-
-        Database database = new Database(this);
-        database.getWritableDatabase();
     }
 
     public void  goToAddActivity(View view) {
-        startActivity(new Intent(getApplicationContext(),AddActivity.class));
+        startActivity(new Intent(getApplicationContext(), AddActivity.class));
     }
 }

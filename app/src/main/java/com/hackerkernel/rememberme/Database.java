@@ -30,7 +30,6 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(delete);
 
         onCreate(db);
-
         Log.d(TAG, "HUS: upgrade");
     }
 }
