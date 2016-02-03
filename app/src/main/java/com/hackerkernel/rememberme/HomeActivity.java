@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import butterknife.Bind;
@@ -13,7 +16,9 @@ import butterknife.ButterKnife;
 public class HomeActivity extends AppCompatActivity {
 
     String mUsername;
-    @Bind(R.id.username) TextView mUsernameView;
+    String[] categoryname;
+
+    @Bind(R.id.listview) ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +28,27 @@ public class HomeActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences(Keys.SP_NAME,MODE_PRIVATE);
         mUsername= sp.getString(Keys.SP_USERNAME,Keys.DEFAULT);
-         T.show(getApplication(), mUsername);
-        mUsernameView.setText(mUsername);
+
+        categoryname = getResources().getStringArray(R.array.category);
+
+        ArrayAdapter <String> adapter = new ArrayAdapter<>(getBaseContext(),android.R.layout.simple_list_item_1,categoryname);
+
+        mListView.setAdapter(adapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedCategory = categoryname[position];
+                Intent intent =  new Intent(getApplication(),UserNames.class);
+                intent.putExtra("username",mUsername).putExtra("category",selectedCategory);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
     }
 
     public void  goToAddActivity(View view) {

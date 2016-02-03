@@ -1,5 +1,6 @@
 package com.hackerkernel.rememberme;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,15 +22,23 @@ public class AddActivity extends AppCompatActivity {
     EditText mPassword;
     @Bind(R.id.save)
     Button mSave;
-
+    String mUsername;
     private String[] category;
     private String selectedCategory;
+    Database mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         ButterKnife.bind(this);
+
+        SharedPreferences sp = getSharedPreferences(Keys.SP_NAME,MODE_PRIVATE);
+
+        mUsername= sp.getString(Keys.SP_USERNAME,Keys.DEFAULT);
+        mDatabase = new Database(getApplication());
+
+
 
         category = getResources().getStringArray(R.array.category);
 
@@ -49,6 +59,11 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = mEmail.getText().toString();
                 String password = mPassword.getText().toString();
+                if (email.isEmpty() || password.isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Fill in all the fields",Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 savedata(email,password,selectedCategory);
             }
         });
@@ -56,6 +71,12 @@ public class AddActivity extends AppCompatActivity {
     }
 
     private void savedata(String email,String password,String category){
-        T.show(getApplication(),"hus:: method rin");
+
+        long result = mDatabase.savakeys(email,password,category,mUsername); ///data
+        if (result == -1){
+            T.show(getApplication(), "Failed to save credentials");
+        }else{
+            T.show(getApplication(), "Credentials saved successfully");
+        }
     }
 }
