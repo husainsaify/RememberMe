@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -18,7 +19,8 @@ public class HomeActivity extends AppCompatActivity {
     String mUsername;
     String[] categoryname;
 
-    @Bind(R.id.listview) ListView mListView;
+    @Bind(R.id.listview)
+    ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +28,12 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-        SharedPreferences sp = getSharedPreferences(Keys.SP_NAME,MODE_PRIVATE);
-        mUsername= sp.getString(Keys.SP_USERNAME,Keys.DEFAULT);
+        SharedPreferences sp = getSharedPreferences(Keys.SP_NAME, MODE_PRIVATE);
+        mUsername = sp.getString(Keys.SP_USERNAME, Keys.DEFAULT);
 
         categoryname = getResources().getStringArray(R.array.category);
 
-        ArrayAdapter <String> adapter = new ArrayAdapter<>(getBaseContext(),android.R.layout.simple_list_item_1,categoryname);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, categoryname);
 
         mListView.setAdapter(adapter);
 
@@ -39,19 +41,17 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedCategory = categoryname[position];
-                Intent intent =  new Intent(getApplication(),UserNames.class);
-                intent.putExtra("username",mUsername).putExtra("category",selectedCategory);
+                Intent intent = new Intent(getApplication(), UserNames.class);
+                intent.putExtra("username", mUsername);
+                intent.putExtra("category", selectedCategory);
                 startActivity(intent);
             }
         });
 
 
-
-
-
     }
 
-    public void  goToAddActivity(View view) {
+    public void goToAddActivity(View view) {
         startActivity(new Intent(getApplicationContext(), AddActivity.class));
     }
 }

@@ -23,8 +23,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Intent intent = new Intent(this,HomeActivity.class);
-        startActivity(intent);
 
         //login code
         mLogin.setOnClickListener(new View.OnClickListener() {

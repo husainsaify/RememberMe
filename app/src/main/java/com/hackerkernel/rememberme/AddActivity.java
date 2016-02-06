@@ -14,14 +14,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class AddActivity extends AppCompatActivity {
-    @Bind(R.id.spinner)
-    Spinner mCategory;
-    @Bind(R.id.email)
-    EditText mEmail;
-    @Bind(R.id.password)
-    EditText mPassword;
-    @Bind(R.id.save)
-    Button mSave;
+    @Bind(R.id.spinner) Spinner mCategory;
+    @Bind(R.id.email) EditText mEmail;
+    @Bind(R.id.password) EditText mPassword;
+    @Bind(R.id.save) Button mSave;
+
+
     String mUsername;
     private String[] category;
     private String selectedCategory;
@@ -35,7 +33,7 @@ public class AddActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences(Keys.SP_NAME,MODE_PRIVATE);
 
-        mUsername= sp.getString(Keys.SP_USERNAME,Keys.DEFAULT);
+        mUsername = sp.getString(Keys.SP_USERNAME,Keys.DEFAULT);
         mDatabase = new Database(getApplication());
 
 
