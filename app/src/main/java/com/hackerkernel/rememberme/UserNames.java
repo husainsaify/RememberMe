@@ -21,25 +21,27 @@ public class UserNames extends AppCompatActivity {
         mUsername = intent.getExtras().getString("username", Keys.DEFAULT);
         mCategory = intent.getExtras().getString("category", Keys.DEFAULT);
 
-        String[] usernameArray = {"murtaza","husain","qut"};
-        String[] passwordArray = {"fatema","tasneem","mariya"};
+        //
 
-        int i = 0;
-        List<CredintialsPojo> list = new ArrayList<>();
-        while (i <= 2){
+
+
+        String[] username = {"hus","qut","qut"};
+
+        String[] password = {"tas","mar","fat"};
+
+        List <CredintialsPojo> list = new ArrayList<>();
+
+        for (int i = 0; i <username.length; i++) {
+
+            String currentu =username[i];
+            String currentp = password[i];
             CredintialsPojo pojo = new CredintialsPojo();
-            pojo.setEmail(usernameArray[i]);
-            pojo.setPassword(passwordArray[i]);
 
+            pojo.setEmail(currentu);
+            pojo.setPassword(currentp);
             list.add(pojo);
-            i++;
         }
-
-        //display list
-        for (int i1 = 0; i1 < list.size(); i1++) {
-            CredintialsPojo pojo = list.get(i1);
-            Log.d("HUS", "HUS: " + pojo.getEmail()+"/"+pojo.getPassword());
-        }
+            T.show(getApplication(),list.size()+"");
 
     }
 }

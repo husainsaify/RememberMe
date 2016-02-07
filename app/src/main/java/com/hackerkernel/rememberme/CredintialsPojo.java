@@ -4,9 +4,7 @@ public class CredintialsPojo {
     String email,
             password;
 
-    public String getEmail() {
-        return email;
-    }
+    public String getEmail() {return email;}
 
     public void setEmail(String email) {
         this.email = email;

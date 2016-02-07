@@ -31,6 +31,8 @@ public class Database extends SQLiteOpenHelper {
         return db.insert("re",null,cv);
     }
 
+
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String table = "CREATE TABLE re (_id INTEGER PRIMARY KEY AUTOINCREMENT,email TEXT,password TEXT,username TEXT,category TEXT);";
