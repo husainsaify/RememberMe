@@ -2,8 +2,11 @@ package com.hackerkernel.rememberme;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -30,8 +33,30 @@ public class UserNames extends AppCompatActivity {
 
         Database db = new Database(this);
 
-        List<CredintialsPojo> list = db.getkeys(mCategory,mUsername);
+        final List<CredintialsPojo> list = db.getkeys(mCategory,mUsername);
 
         List<String> stringList = new ArrayList<>();
+        for (int i = 0; i <list.size() ; i++)
+        {
+            String email = list.get(i).getEmail();
+            stringList.add(email);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,stringList);
+        mListView.setAdapter(adapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String password = list.get(position).getPassword();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplication());
+                builder.setTitle("Your Password Is:-");
+                builder.setPositiveButton("OK", null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+            }
+        });
     }
 }
