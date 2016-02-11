@@ -15,4 +15,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/listview"/>
 
+    <TextView
+        android:id="@+id/placeholder"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="No credentials added in this category"
+        android:gravity="center_vertical|center_horizontal"/>
+
 </RelativeLayout>

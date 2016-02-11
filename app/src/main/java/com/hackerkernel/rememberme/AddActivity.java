@@ -75,6 +75,9 @@ public class AddActivity extends AppCompatActivity {
             T.show(getApplication(), "Failed to save credentials");
         }else{
             T.show(getApplication(), "Credentials saved successfully");
+            //remove text from EditTExt
+            mEmail.setText("");
+            mPassword.setText("");
         }
     }
 }
