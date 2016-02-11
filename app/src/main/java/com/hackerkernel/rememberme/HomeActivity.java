@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,14 +20,19 @@ public class HomeActivity extends AppCompatActivity {
     String mUsername;
     String[] categoryname;
 
-    @Bind(R.id.listview)
-    ListView mListView;
+    @Bind(R.id.listview) ListView mListView;
+    @Bind(R.id.toolbar_new) Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+
+
+        setSupportActionBar(mToolbar);
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setTitle(getString(R.string.app_name));
 
         SharedPreferences sp = getSharedPreferences(Keys.SP_NAME, MODE_PRIVATE);
         mUsername = sp.getString(Keys.SP_USERNAME, Keys.DEFAULT);

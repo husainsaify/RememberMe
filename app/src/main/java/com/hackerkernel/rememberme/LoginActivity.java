@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity {
+    @Bind(R.id.toolbar_new) Toolbar mToolbar;
     @Bind(R.id.username) EditText mUsername;
     @Bind(R.id.password) EditText mPassword;
     @Bind(R.id.login) Button mLogin;
@@ -23,6 +25,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        setSupportActionBar(mToolbar);
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setTitle(getString(R.string.app_name));
 
         //login code
         mLogin.setOnClickListener(new View.OnClickListener() {

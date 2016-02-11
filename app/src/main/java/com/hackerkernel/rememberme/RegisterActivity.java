@@ -2,8 +2,9 @@ package com.hackerkernel.rememberme;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,16 +16,22 @@ import butterknife.ButterKnife;
 public class RegisterActivity extends AppCompatActivity {
     @Bind(R.id.username)EditText mUsername;
     @Bind(R.id.password) EditText mPassword;
-    @Bind(R.id.register)
-    Button mRegister;
-    @Bind(R.id.goToLogin)
-    TextView mGoToLogin;
+    @Bind(R.id.register) Button mRegister;
+    @Bind(R.id.goToLogin) TextView mGoToLogin;
+    @Bind(R.id.toolbar_new) Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+
+        setSupportActionBar(mToolbar);
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setTitle(getString(R.string.register));
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = mPassword.getText().toString().trim();
 
                 if (username.isEmpty() || password.isEmpty()) {
-                    T.show(getApplicationContext(), "Fill in All The Feilds");
+                    T.show(getApplicationContext(), "Fill in All The Fields");
                 } else if (username.length() < 3) {
                     T.show(getApplicationContext(), "username should be more than 3 letter");
 
@@ -53,7 +60,12 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-
-
+        //go to lognb
+        mGoToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+            }
+        });
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,6 +23,7 @@ public class UserNames extends AppCompatActivity {
 
     @Bind(R.id.listview) ListView mListView;
     @Bind(R.id.placeholder) TextView mPlaceholder;
+    @Bind(R.id.toolbar_new) Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,12 @@ public class UserNames extends AppCompatActivity {
         Intent intent = getIntent();
         mUsername = intent.getExtras().getString("username", Keys.DEFAULT);
         mCategory = intent.getExtras().getString("category", Keys.DEFAULT);
+
+        setSupportActionBar(mToolbar);
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setTitle(mCategory);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Database db = new Database(this);
 

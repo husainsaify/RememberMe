@@ -3,6 +3,7 @@ package com.hackerkernel.rememberme;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -18,6 +19,7 @@ public class AddActivity extends AppCompatActivity {
     @Bind(R.id.email) EditText mEmail;
     @Bind(R.id.password) EditText mPassword;
     @Bind(R.id.save) Button mSave;
+    @Bind(R.id.toolbar_new) Toolbar mToolbar;
 
 
     String mUsername;
@@ -30,6 +32,12 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         ButterKnife.bind(this);
+
+        setSupportActionBar(mToolbar);
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setTitle("Add credentials");
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences sp = getSharedPreferences(Keys.SP_NAME,MODE_PRIVATE);
 
