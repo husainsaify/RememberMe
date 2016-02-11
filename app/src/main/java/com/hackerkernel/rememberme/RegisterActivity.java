@@ -45,10 +45,20 @@ public class RegisterActivity extends AppCompatActivity {
 
                 } else if (password.length() < 8) {
                     T.show(getApplicationContext(), "password should be more than 8 letter");
+
+
+                }
+                SharedPreferences isp = getSharedPreferences(Keys.SP_NAME, MODE_PRIVATE);
+                String passwordsp = isp.getString(Keys.SP_PASSWORD, Keys.DEFAULT);
+                String usernamesp = isp.getString(Keys.SP_USERNAME, Keys.DEFAULT);
+                if (username.equals(usernamesp) || password.equals(passwordsp)) {
+
+                    T.show(getApplicationContext(),"PLEASE SELECT A DIFFERENT USERNAME AND PASSWORD");
+
                 } else {
-                    SharedPreferences sp = getSharedPreferences(Keys.SP_NAME,MODE_PRIVATE);
-                    sp.edit().putString(Keys.SP_USERNAME,username)
-                            .putString(Keys.SP_PASSWORD,password)
+                    SharedPreferences sp = getSharedPreferences(Keys.SP_NAME, MODE_PRIVATE);
+                    sp.edit().putString(Keys.SP_USERNAME, username)
+                            .putString(Keys.SP_PASSWORD, password)
                             .apply();
                     T.show(getApplication(), "Register successful");
                     //send user to home page

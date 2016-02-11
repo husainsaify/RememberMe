@@ -5,40 +5,40 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <include layout="@layout/include_toolbar" android:id="@+id/toolbar_new"/>
+    <include layout="@layout/include_toolbar"
+             android:id="@+id/toolbar_new"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/entermasterpassword"
+        android:id="@+id/hint"
+        android:textColor="@color/primary"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+
+
+        android:layout_below="@+id/toolbar_new"
+
+        android:textSize="20sp"/>
 
 
     <android.support.design.widget.TextInputLayout
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_below="@+id/toolbar_new"
-        android:id="@+id/username_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:layout_below="@+id/toolbar_new"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/username"
-            android:id="@+id/username"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
         android:id="@+id/password_layout"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_below="@id/username_layout"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hint">
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/password"
             android:inputType="textPassword"
-            android:hint="@string/password" />
+            android:hint="MasterPassword" />
     </android.support.design.widget.TextInputLayout>
 
     <Button

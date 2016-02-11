@@ -2,6 +2,7 @@ package com.hackerkernel.rememberme;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,9 +25,11 @@ public class UserNames extends AppCompatActivity {
     @Bind(R.id.listview) ListView mListView;
     @Bind(R.id.placeholder) TextView mPlaceholder;
     @Bind(R.id.toolbar_new) Toolbar mToolbar;
+    @Bind(R.id.flotingbutton)
+    FloatingActionButton button;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_names);
         ButterKnife.bind(this);
@@ -80,6 +83,15 @@ public class UserNames extends AppCompatActivity {
 
                 }
             });
-        }
+
+        } button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserNames.this,AddActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }

@@ -22,4 +22,13 @@
         android:text="No credentials added in this category"
         android:gravity="center_vertical|center_horizontal"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_add_white_24dp"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/flotingbutton"/>
+
 </RelativeLayout>

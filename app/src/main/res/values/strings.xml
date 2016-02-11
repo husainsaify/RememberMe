@@ -20,6 +20,7 @@
     </string>
     <string name="already_member_register">Already a member? Login</string>
     <string name="register">Register</string>
+    <string name="entermasterpassword">ENTER YOUR MASTER PASSWORD</string>
     <string-array name="category">
         <item>Google</item>
         <item>Facebook</item>

@@ -2,6 +2,7 @@ package com.hackerkernel.rememberme;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,17 +23,23 @@ public class HomeActivity extends AppCompatActivity {
 
     @Bind(R.id.listview) ListView mListView;
     @Bind(R.id.toolbar_new) Toolbar mToolbar;
+    @Bind(R.id.flotingbuttong)
+    FloatingActionButton button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+
 
 
         setSupportActionBar(mToolbar);
         assert getSupportActionBar() != null;
         getSupportActionBar().setTitle(getString(R.string.app_name));
+
 
         SharedPreferences sp = getSharedPreferences(Keys.SP_NAME, MODE_PRIVATE);
         mUsername = sp.getString(Keys.SP_USERNAME, Keys.DEFAULT);
@@ -53,11 +60,17 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, AddActivity.class));
+            }
+        });
 
 
     }
 
-    public void goToAddActivity(View view) {
-        startActivity(new Intent(getApplicationContext(), AddActivity.class));
+
     }
-}
+
+
