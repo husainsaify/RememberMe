@@ -2,9 +2,13 @@ package com.hackerkernel.rememberme;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Database extends SQLiteOpenHelper {
 
@@ -31,7 +35,26 @@ public class Database extends SQLiteOpenHelper {
         return db.insert("re",null,cv);
     }
 
+    public List<CredintialsPojo> getkeys(String category, String username) {
 
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<CredintialsPojo> list = new ArrayList<>();
+        String[] col = {"email","password"};
+        String where = "category = ? AND username = ?";
+        String[] whereArgs = {category,username};
+        Cursor cursor = db.query("re", col, where, whereArgs, null, null, null);
+        while (cursor.moveToNext()){
+            String email = cursor.getString(cursor.getColumnIndex("email"));
+            String password = cursor.getString(cursor.getColumnIndex("password"));
+            CredintialsPojo pojo = new CredintialsPojo();
+            pojo.setEmail(email);
+            pojo.setPassword(password);
+            //to list
+            list.add(pojo);
+        }
+        cursor.close();
+        return list;
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
