@@ -50,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
                     sp.edit().putString(Keys.SP_USERNAME,username)
                             .putString(Keys.SP_PASSWORD,password)
                             .apply();
-                    T.show(getApplication(), "Register susccelfull");
+                    T.show(getApplication(), "Register successful");
                     //send user to home page
                     Intent intent = new Intent(getApplication(), HomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
