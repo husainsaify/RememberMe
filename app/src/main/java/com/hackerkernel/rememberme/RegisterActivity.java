@@ -40,6 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (username.isEmpty() || password.isEmpty()) {
                     T.show(getApplicationContext(), "Fill in All The Fields");
+                    return;
+
                 } else if (username.length() < 3) {
                     T.show(getApplicationContext(), "username should be more than 3 letter");
 

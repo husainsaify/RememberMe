@@ -1,6 +1,8 @@
 package com.hackerkernel.rememberme;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -9,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,6 +30,8 @@ public class UserNames extends AppCompatActivity {
     @Bind(R.id.toolbar_new) Toolbar mToolbar;
     @Bind(R.id.flotingbutton)
     FloatingActionButton button;
+    @Bind(R.id.delete)
+    Button delete;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -44,7 +49,8 @@ public class UserNames extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Database db = new Database(this);
+         Database db = new Database(this);
+
 
         final List<CredintialsPojo> list = db.getkeys(mCategory,mUsername);
 
@@ -64,6 +70,7 @@ public class UserNames extends AppCompatActivity {
                 String email = list.get(i).getEmail();
                 stringList.add(email);
             }
+
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,stringList);
             mListView.setAdapter(adapter);
@@ -89,6 +96,14 @@ public class UserNames extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UserNames.this,AddActivity.class);
                 startActivity(intent);
+            }
+        });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Database db = new Database(getApplicationContext());
+                db.deletedata();
+
             }
         });
 

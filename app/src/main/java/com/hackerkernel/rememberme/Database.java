@@ -62,6 +62,15 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(table);
         Log.d(TAG, "HUS: ON create run");
     }
+    //DELETED DataBASE
+    public int deletedata(){
+        SQLiteDatabase sqLiteDatabase  = this.getWritableDatabase();
+        String[] where = {"murtaza"};
+        int lon= sqLiteDatabase.delete("re", "email"+"=?", where);
+        Log.d(TAG, "MUR:: DELETE run");
+        return lon;
+
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -70,5 +79,7 @@ public class Database extends SQLiteOpenHelper {
 
         onCreate(db);
         Log.d(TAG, "HUS: upgrade");
+
+
     }
 }
